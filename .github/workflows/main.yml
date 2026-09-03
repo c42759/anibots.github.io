@@ -1,0 +1,63 @@
+name: NextJS CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: [self-hosted, linux]
+
+    defaults:
+      run:
+        working-directory: ./frontend
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      # Setup pnpm config
+      - name: Setup pnpm config
+        run: echo "store-dir=${{ github.workspace }}/.pnpm-store" >> .npmrc
+        working-directory: .
+
+      # Setup Node.js
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+
+      - run: pnpm install --config.approve-builds=true
+      - run: pnpm run build
+      - run: ls -lah
+      - run: ls -lah ./build/
+
+      - name: Upload static files as artifact
+        id: deployment
+        uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
+        with:
+          path: ./frontend/build/
+
+  deploy:
+    # Add a dependency to the build job
+    needs: build
+
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
