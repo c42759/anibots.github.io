@@ -21,9 +21,9 @@ This repository hosts the public-facing landing page and onboarding portal desig
 - Introduce players and contributors to the AniBots universe and mechanics.
 - Recruit contributors across specialized roles: Pixel Artists, 3D Modelers, Game Devs (GDScript/Godot), UI/UX Designers, Writers, and Audio Composers.
 - Provide interactive showcases of the 5-slot modular hardware system (Head, Torso, Left Arm, Right Arm, Legs) and Anima Chip AI series.
-- Connect community members via embedded Discord widgets, GitHub Discussions, and issue boards.
+- Connect community members via Discord, GitHub Discussions, and issue boards.
 
-> **Looking for the game engine source code?**  
+> **Looking for the game engine source code?**
 > Visit the primary game repository at [c42759/AniBots](https://github.com/c42759/AniBots).
 
 ---
@@ -128,7 +128,7 @@ For game contributions (sprites, 3D models, GDScript, lore), head over to the [A
 
 ## Community & Support
 
-- **Discord**: Join the team and contributors on [Discord](https://discord.com/widget?id=1544679075463823430&theme=dark)
+- **Discord**: Join the team and contributors on [Discord](https://discord.gg/FEjMjNGRFg)
 - **Discussions**: Brainstorm ideas on [GitHub Discussions](https://github.com/c42759/AniBots/discussions)
 - **Issues**: Report bugs or pick up tasks on [GitHub Issues](https://github.com/c42759/AniBots/issues)
 
