@@ -30,7 +30,7 @@ jobs:
           node-version: "24.x"
 
       - run: pnpm install --config.approve-builds=true
-      - run: pnpm run build
+      - run: pnpm run build --webpack
       - run: ls -lah
       - run: ls -lah ./build/
 
